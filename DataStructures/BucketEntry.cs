@@ -6,26 +6,30 @@ namespace DataStructures
     public class BucketEntry<TKey, TValue> 
     {
 
-        public TValue Head { get; set; }
+        private List<(TKey key, TValue value)> chain;
+        private TValue head;
 
-        public List<(TKey key, TValue value)> Chain { get; set; }
+
+        public virtual TValue Head => head;
+
+        public List<(TKey key, TValue value)> Chain => chain;
 
 
         public BucketEntry()
         {
-            Chain = new List<(TKey key, TValue value)>();
+            chain = new List<(TKey key, TValue value)>();
         }
 
-        public void Add(TKey key, TValue value)
+        public virtual void Add(TKey key, TValue value)
         {
 
             if(Head == null || Head.Equals(0))
             {
-                Head = value;
+                head = value;
             }
             else
             {
-                Chain.InsertItem((key, value));
+                chain.InsertItem((key, value));
             }
 
         }

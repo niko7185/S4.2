@@ -852,8 +852,32 @@ namespace ConsoleLogger
 
             }
 
-            Console.WriteLine(headHashTable.LookUp("685"));
+            Stopwatch watch = Stopwatch.StartNew();
+
+            int value = headHashTable.LookUp("685");
+
+            watch.Stop();
+
+            Console.WriteLine(value + " :" + watch.Elapsed.Ticks);
             Console.WriteLine();
+
+            TreeHashTable<string, int> treeHashTable = new TreeHashTable<string, int>();
+
+            for(int i = 1; i < 1000; i++)
+            {
+                treeHashTable.Add(i.ToString(), i);
+
+                if(i == 795)
+                    Console.WriteLine(treeHashTable.LookUp("685"));
+
+            }
+            watch = Stopwatch.StartNew();
+
+            value = treeHashTable.LookUp("685");
+
+            watch.Stop();
+
+            Console.WriteLine(value + " :" + watch.Elapsed.Ticks);
 
 
         }
