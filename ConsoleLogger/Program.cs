@@ -853,6 +853,7 @@ namespace ConsoleLogger
             }
 
             Console.WriteLine(headHashTable.LookUp("685"));
+            Console.WriteLine();
 
 
         }
