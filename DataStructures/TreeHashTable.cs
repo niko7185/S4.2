@@ -18,12 +18,7 @@ namespace DataStructures
         {
 
             if(loadFactorThresholdReached)
-            {
-
-                CalculateLoadFactor();
-
                 ReHash();
-            }
 
             int hash = Hash(key);
 
@@ -67,6 +62,10 @@ namespace DataStructures
             int newLength = Int32.Parse(Math.Round(increasedLength).ToString());
 
             bucketArray = new BucketTreeEntry<TKey, TValue>[newLength];
+            length = newLength;
+
+            CalculateLoadFactor();
+
             count = 0;
             elements = 0;
 
@@ -78,7 +77,6 @@ namespace DataStructures
                 Add(hash.key, hash.value);
             }
 
-            length = newLength;
         }
 
     }

@@ -815,7 +815,7 @@ namespace ConsoleLogger
 
             HashTable<string, int> hashTable = new HashTable<string, int>();
 
-            for(int i = 1; i < 1000; i++)
+            for(int i = 1; i < 2000; i++)
             {
                 hashTable.Add(i.ToString(), i);
 
@@ -829,7 +829,7 @@ namespace ConsoleLogger
 
             ChainableHashTable<string, int> chainableHashTable = new ChainableHashTable<string, int>();
 
-            for(int i = 1; i < 1000; i++)
+            for(int i = 1; i < 2000; i++)
             {
                 chainableHashTable.Add(i.ToString(), i);
 
@@ -843,7 +843,7 @@ namespace ConsoleLogger
 
             HeadHashTable<string, int> headHashTable = new HeadHashTable<string, int>();
 
-            for(int i = 1; i < 1000; i++)
+            for(int i = 1; i < 2000; i++)
             {
                 headHashTable.Add(i.ToString(), i);
 
@@ -863,7 +863,7 @@ namespace ConsoleLogger
 
             TreeHashTable<string, int> treeHashTable = new TreeHashTable<string, int>();
 
-            for(int i = 1; i < 1000; i++)
+            for(int i = 1; i < 2000; i++)
             {
                 treeHashTable.Add(i.ToString(), i);
 
