@@ -3,14 +3,13 @@ using System.Text;
 
 namespace DataStructures
 {
-    public class BucketEntry<TKey, TValue> where TValue : IComparable<TValue>
+    public class BucketEntry<TKey, TValue> 
     {
 
         public TValue Head { get; set; }
 
         public List<(TKey key, TValue value)> Chain { get; set; }
 
-        private BinarySearchTree<TValue> root;
 
         public BucketEntry()
         {
@@ -19,7 +18,7 @@ namespace DataStructures
 
         public BucketEntry(TValue value)
         {
-            root = new BinarySearchTree<TValue>(new BinaryTreeNode<TValue>(value));
+
         }
 
         public void Add(TKey key, TValue value)
