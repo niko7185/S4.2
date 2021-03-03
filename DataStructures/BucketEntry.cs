@@ -16,28 +16,17 @@ namespace DataStructures
             Chain = new List<(TKey key, TValue value)>();
         }
 
-        public BucketEntry(TValue value)
-        {
-
-        }
-
         public void Add(TKey key, TValue value)
         {
 
-            if(Chain == null)
-                return;
-
-            if(Chain.Count <= 0)
+            if(Head == null || Head.Equals(0))
             {
                 Head = value;
             }
-
-            Chain.InsertItem((key, value));
-
-        }
-
-        public void Insert()
-        {
+            else
+            {
+                Chain.InsertItem((key, value));
+            }
 
         }
 

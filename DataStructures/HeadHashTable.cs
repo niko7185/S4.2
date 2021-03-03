@@ -48,7 +48,7 @@ namespace DataStructures
         {
             int hash = Hash(key);
 
-            if(bucketArray[hash].Chain.Count <= 1)
+            if(bucketArray[hash].Chain.Count < 1)
                 return bucketArray[hash].Head;
 
             for(int i = 0; i < bucketArray[hash].Chain.Count; i++)
@@ -66,7 +66,6 @@ namespace DataStructures
 
         protected override void ReHash()
         {
-
 
             double increasedLength = (double)length * increaseSizeFactor;
 
