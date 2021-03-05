@@ -8,6 +8,8 @@ using Algorithms;
 
 using DataStructures;
 
+using Entities;
+
 namespace ConsoleLogger
 {
     class Program
@@ -44,7 +46,9 @@ namespace ConsoleLogger
 
             //LogLinearTree();
 
-            LogHashTable();
+            //LogHashTable();
+
+            LogAirport();
 
             //Console.WriteLine(Recursion.FibonacciSequence());
             //
@@ -878,6 +882,44 @@ namespace ConsoleLogger
             watch.Stop();
 
             Console.WriteLine(value + " :" + watch.Elapsed.Ticks);
+
+            treeHashTable.Remove("685");
+            
+            Console.WriteLine(treeHashTable.LookUp("685"));
+
+
+        }
+
+        public static void LogAirport()
+        {
+
+            Vertex<Airport> aalborg = new Vertex<Airport>(new Airport("Aalborg"));
+
+            Vertex<Airport> roenne = new Vertex<Airport>(new Airport("Rønne"));
+
+            Vertex<Airport> billund = new Vertex<Airport>(new Airport("Billund"));
+
+            Vertex<Airport> tirstrup = new Vertex<Airport>(new Airport("Tirstrup"));
+
+            Vertex<Airport> odense = new Vertex<Airport>(new Airport("Odense"));
+
+            Vertex<Airport> kastrup = new Vertex<Airport>(new Airport("Kastrup"));
+
+            aalborg.AddNeighbour(odense);
+
+            kastrup.AddNeighbour(tirstrup);
+
+            aalborg.AddNeighbour(kastrup);
+
+            roenne.AddNeighbour(kastrup);
+
+            aalborg.AddNeighbour(roenne);
+
+            billund.AddNeighbour(kastrup);
+
+            aalborg.AddNeighbour(billund);
+
+            Console.WriteLine(aalborg.PrintGraph(3));
 
 
         }

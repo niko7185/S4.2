@@ -38,6 +38,9 @@ namespace DataStructures
 
             BinaryTreeNode<(TKey key, TValue value)> node = Search(key, tree.Root);
 
+            if(node == null)
+                return tree.Root.Value.value;
+
             return node.Value.value;
         }
 
@@ -61,6 +64,77 @@ namespace DataStructures
                     return node;
 
                 node = Search(key, root.RightChild);
+            }
+
+            return node;
+        }
+
+        public void Delete(TKey key)
+        {
+
+            int height = tree.GetHeight(tree.Root);
+
+            var last = GetLast(height, tree.Root);
+
+            RemoveNode(key, last.Value, tree.Root);
+
+        }
+
+        private bool RemoveNode(TKey key, (TKey key, TValue value) bucket, BinaryTreeNode<(TKey key, TValue value)> root)
+        {
+
+            bool done = false;
+
+            if(root != null)
+            {
+
+                if(root.Value.key.CompareTo(key) == 0)
+                {
+
+                    root.Value = bucket;
+                    done = true;
+                }
+                else
+                {
+
+                    done = RemoveNode(key, bucket, root.LeftChild);
+
+                    if(!done)
+                        done = RemoveNode(key, bucket, root.RightChild);
+
+                }
+
+            }
+
+            return done;
+        }
+
+        private BinaryTreeNode<(TKey key, TValue value)> GetLast(int level, BinaryTreeNode<(TKey key, TValue value)> root)
+        {
+
+            if(level <= 1)
+            {
+
+                return root;
+            }
+
+            BinaryTreeNode<(TKey key, TValue value)> node = null;
+
+            if(root.LeftChild != null)
+            {
+                node = GetLast(level - 1, root.LeftChild);
+
+                if(node != null && level <= 2)
+                    root.RemoveLeftChild();
+
+            }
+
+            if(root.RightChild != null && node == null)
+            {
+                node = GetLast(level - 1, root.RightChild);
+
+                if(node != null && level <= 2)
+                    root.RemoveRightChild();
             }
 
             return node;

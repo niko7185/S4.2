@@ -94,5 +94,16 @@ namespace DataStructures
             return array;
         }
 
+        public bool Contains(T value)
+        {
+            for(int i = 0; i < count; i++)
+            {
+                if(array[i].Equals(value))
+                    return true;
+            }
+
+            return false;
+        }
+
     }
 }

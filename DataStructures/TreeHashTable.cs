@@ -46,12 +46,14 @@ namespace DataStructures
 
         public override TValue LookUp(TKey key)
         {
+
             int hash = Hash(key);
 
-            if(bucketArray[hash].Tree.Root.isEmpty)
+            if(bucketArray[hash] != null && bucketArray[hash].Tree.Root.isEmpty)
                 return bucketArray[hash].Head;
 
             return bucketArray[hash].Find(key);
+
         }
 
         protected override void ReHash()
@@ -77,6 +79,25 @@ namespace DataStructures
                 Add(hash.key, hash.value);
             }
 
+        }
+
+        public void Remove(TKey key)
+        {
+
+            int hash = Hash(key);
+
+            if(bucketArray[hash].Tree.Root.isEmpty)
+            {
+                bucketArray[hash] = null;
+
+                elements--;
+                count--;
+
+                return;
+            }
+            count--;
+
+            bucketArray[hash].Delete(key);
         }
 
     }

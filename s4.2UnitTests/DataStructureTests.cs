@@ -344,6 +344,27 @@ namespace s4._2UnitTests
 
             if(hashTable.LookUp("477") != 477)
                 Assert.True(false);
+
+            TreeHashTable<string, int> treeHashTable = new TreeHashTable<string, int>();
+
+            for(int i = 1; i < 1000; i++)
+            {
+                treeHashTable.Add(i.ToString(), i);
+
+            }
+
+            if(treeHashTable.LookUp("643") != 643)
+                Assert.Equal(643, treeHashTable.LookUp("643"));
+
+            if(treeHashTable.LookUp("56") != 56)
+                Assert.Equal(56, treeHashTable.LookUp("56"));
+
+            if(treeHashTable.LookUp("275") != 275)
+                Assert.True(false);
+
+            if(treeHashTable.LookUp("477") != 477)
+                Assert.True(false);
+
         }
 
     }
